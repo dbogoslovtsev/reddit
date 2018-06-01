@@ -1,13 +1,10 @@
 package com.example.reddit.presentation.base
 
-interface BasePresenter {
+interface BasePresenter<View> {
 
-    interface BasePresenter<View> {
+    fun onCreate(view: View)
 
-        fun onCreate(view: View?)
-
-        fun onDestroy()
-
-    }
+    fun onDestroy()
 
 }
+

@@ -4,7 +4,7 @@ class MainPresenter : MainContract.Presenter {
 
     private var view: MainContract.View? = null
 
-    override fun onCreate(view: MainContract.View?) {
+    override fun onCreate(view: MainContract.View) {
         this.view = view
     }
 

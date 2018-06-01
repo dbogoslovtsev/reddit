@@ -9,7 +9,7 @@ interface MainContract {
 
     }
 
-    interface Presenter : BasePresenter.BasePresenter<View> {
+    interface Presenter : BasePresenter<View> {
 
     }
 
