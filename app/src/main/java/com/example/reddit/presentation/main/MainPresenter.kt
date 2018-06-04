@@ -1,6 +1,7 @@
 package com.example.reddit.presentation.main
 
 import com.example.domain.entity.Post
+import com.example.domain.entity.DataWrapper
 import com.example.domain.usecase.GetTopPostsUc
 import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
@@ -14,8 +15,8 @@ class MainPresenter @Inject constructor(val getTopPostsUc: GetTopPostsUc) : Main
     }
 
     override fun getTopPosts(after: String?) {
-        getTopPostsUc.execute(object : DisposableSingleObserver<List<Post>>() {
-            override fun onSuccess(t: List<Post>) {
+        getTopPostsUc.execute(object : DisposableSingleObserver<List<DataWrapper<Post>>>() {
+            override fun onSuccess(t: List<DataWrapper<Post>>) {
                 view?.renderError("Top posts loaded successfully")
             }
 

@@ -18,8 +18,8 @@ class TokenRefreshInterceptor constructor(val oauthRetrofit: OauthRetrofitServic
         if (response.code() == 401) {
 
             val requestBody = mapOf(
-                    "https://oauth.reddit.com/grants/installed_client" to "grant_type",
-                    "DO_NOT_TRACK_THIS_DEVICE" to "device_id")
+                    "grant_type" to "https://oauth.reddit.com/grants/installed_client",
+                    "device_id" to "DO_NOT_TRACK_THIS_DEVICE")
             val call: Call<OauthResponse> = oauthRetrofit
                     .getToken(requestBody)
 
@@ -29,8 +29,8 @@ class TokenRefreshInterceptor constructor(val oauthRetrofit: OauthRetrofitServic
                     keyStore.saveToken(token)
 
                     val newHeaders = request.headers().newBuilder()
-                            .add("Content-Type", "application/json")
-                            .add("Authorization", "bearer $token")
+                            .set("Content-Type", "application/json")
+                            .set("Authorization", "bearer $token")
                             .build()
 
                     val builder = request.newBuilder().headers(newHeaders)

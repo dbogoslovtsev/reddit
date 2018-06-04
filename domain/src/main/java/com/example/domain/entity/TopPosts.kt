@@ -9,7 +9,7 @@ class TopPosts {
     val count: Int = 0
 
     @SerializedName("children")
-    val posts: ResponseData<Post>? = null
+    val posts: List<DataWrapper<Post>>? = null
 
     @SerializedName("after")
     val after: String? = null

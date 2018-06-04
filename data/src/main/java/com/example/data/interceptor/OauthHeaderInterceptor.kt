@@ -11,7 +11,7 @@ class OauthHeaderInterceptor : Interceptor {
 
         val originalRequest = chain.request()
 
-        val clientId64 = Base64.encodeToString(RetrofitConfig.CLIENT_ID.toByteArray(), Base64.NO_WRAP)
+        val clientId64 = Base64.encodeToString("${RetrofitConfig.CLIENT_ID}:".toByteArray(), Base64.NO_WRAP)
         val credentials = "Basic $clientId64"
 
         val headeredRequestBuilder = originalRequest.newBuilder()

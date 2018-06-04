@@ -7,6 +7,7 @@ class BaseResponse<Data> {
     @SerializedName("kind")
     val kind: String = ""
 
+    @SerializedName("data")
     val data: Data? = null
 
 }

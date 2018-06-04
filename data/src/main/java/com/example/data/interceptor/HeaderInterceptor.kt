@@ -14,7 +14,9 @@ class HeaderInterceptor constructor(val keyStore: KeyStore) : Interceptor {
         val headeredRequestBuilder = originalRequest.newBuilder()
 
         headeredRequestBuilder.addHeader("Content-Type", "application/json")
-        headeredRequestBuilder.addHeader("Authorization", "bearer " + keyStore.provideToken())
+        if (!keyStore.provideToken().isEmpty())
+            headeredRequestBuilder.addHeader("Authorization", "bearer ${keyStore.provideToken()}")
+        else headeredRequestBuilder.addHeader("Authorization", "bearer 1234567890")
 
         return chain.proceed(headeredRequestBuilder.build())
     }
