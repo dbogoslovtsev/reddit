@@ -1,4 +1,4 @@
-package com.example.reddit.di
+package com.example.reddit.di.module
 
 import com.example.reddit.presentation.main.MainContract
 import com.example.reddit.presentation.main.MainPresenter

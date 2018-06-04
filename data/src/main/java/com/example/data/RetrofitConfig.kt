@@ -1,13 +1,12 @@
 package com.example.data
 
-
-/**
- * Created by dbogoslovtsev on 12/5/17.
- */
 class RetrofitConfig {
 
     companion object {
-        val BASE_ENDPOINT = ""
+        val BASE_URL = "https://oauth.reddit.com"
+
+        val CLIENT_ID = "e_IHK9IFZCtryw"
+        val TOKEN_BASE_URL = "https://www.reddit.com"
 
         val CONNECTION_TIMEOUT_SECONDS: Long = 20
         val READ_TIMEOUT_SECONDS: Long = 60

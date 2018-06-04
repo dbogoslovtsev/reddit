@@ -1,4 +1,4 @@
-package com.example.reddit.di
+package com.example.reddit.di.module
 
 import android.app.Application
 import android.content.Context
