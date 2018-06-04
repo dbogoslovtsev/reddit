@@ -10,7 +10,7 @@ interface MainContract {
     }
 
     interface Presenter : BasePresenter<View> {
-
+        fun getTopPosts(after: String?)
     }
 
 }

@@ -15,8 +15,7 @@ class TokenRefreshInterceptor constructor(val oauthRetrofit: OauthRetrofitServic
         val request = chain.request()
         var response = chain.proceed(request)
 
-        if (response.code() == 403) {
-
+        if (response.code() == 401) {
 
             val requestBody = mapOf(
                     "https://oauth.reddit.com/grants/installed_client" to "grant_type",

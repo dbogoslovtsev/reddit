@@ -50,7 +50,7 @@ open class RetrofitModule {
 
     @Singleton
     @Provides
-    fun provideTokenRefreshInterceptor(@OauthQualifier oauthRetrofit: OauthRetrofitService,
+    fun provideTokenRefreshInterceptor(oauthRetrofit: OauthRetrofitService,
                                        keyStore: KeyStore): TokenRefreshInterceptor {
         return TokenRefreshInterceptor(oauthRetrofit, keyStore)
     }
@@ -66,7 +66,7 @@ open class RetrofitModule {
 
     @Singleton
     @Provides
-    fun provideOauthRetrofitService(retrofit: Retrofit): OauthRetrofitService {
+    fun provideOauthRetrofitService(@OauthQualifier retrofit: Retrofit): OauthRetrofitService {
         return retrofit.create(OauthRetrofitService::class.java)
     }
 

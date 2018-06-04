@@ -4,17 +4,22 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.example.reddit.R
+import com.example.reddit.RedditApplication
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainContract.View {
 
-    private var presenter: MainContract.Presenter? = null
+    @Inject
+    @JvmField
+    var presenter: MainContract.Presenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        presenter = MainPresenter()
+        RedditApplication.appComponent.inject(this)
         presenter?.onCreate(this)
+        presenter?.getTopPosts(null)
     }
 
     override fun onDestroy() {

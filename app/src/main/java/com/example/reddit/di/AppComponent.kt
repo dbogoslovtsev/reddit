@@ -11,7 +11,8 @@ import javax.inject.Singleton
     PresentersModule::class,
     RepositoriesModule::class,
     ExecutionThreadsModule::class,
-    RetrofitModule::class
+    RetrofitModule::class,
+    KeyStoreModule::class
 ])
 interface AppComponent {
 
