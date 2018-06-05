@@ -48,13 +48,13 @@ class PostAdapter(val onItemClicked: (url: String) -> Unit,
                 itemView.rating.text = score
                 itemView.comments.text = num_comments
 
-
+                if (url.contains(".gifv")) url = url.replace(".gifv", ".gif")
                 GlideApp.with(itemView).apply {
                     if (url.contains("gif")) {
                         asGif()
                     }
                     load(url)
-                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                            .diskCacheStrategy(DiskCacheStrategy.DATA)
                             .into(DrawableImageViewTarget(itemView.image))
                 }
 

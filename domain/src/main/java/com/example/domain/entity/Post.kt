@@ -23,7 +23,7 @@ class Post {
     val num_comments: String = ""
 
     @SerializedName("url")
-    val url: String = ""
+    var url: String = ""
 
     @SerializedName("thumbnail")
     val thumbnail: String = ""
