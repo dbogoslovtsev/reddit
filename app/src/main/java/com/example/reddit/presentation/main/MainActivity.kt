@@ -1,6 +1,8 @@
 package com.example.reddit.presentation.main
 
+import android.net.Uri
 import android.os.Bundle
+import android.support.customtabs.CustomTabsIntent
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
@@ -40,7 +42,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
 
     private fun onItemClicked(url: String) {
-        renderError(url)
+        CustomTabsIntent.Builder()
+                .setToolbarColor(resources.getColor(R.color.colorPrimary))
+                .build()
+                .launchUrl(this, Uri.parse(url))
+    }
+
+    private fun onLastPostReached(postId: String) {
+        presenter?.getTopPosts(postId)
     }
 
     override fun renderPosts(posts: List<DataWrapper<Post>>) {
