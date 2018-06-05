@@ -12,7 +12,7 @@ import com.example.reddit.presentation.utils.DateUtils
 import kotlinx.android.synthetic.main.item_post.view.*
 import java.util.*
 
-class PostAdapter(val onItemClicked: (url:String) -> Unit) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class PostAdapter(val onItemClicked: (url: String) -> Unit) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     var posts: MutableList<DataWrapper<Post>> = mutableListOf()
 
@@ -40,7 +40,7 @@ class PostAdapter(val onItemClicked: (url:String) -> Unit) : RecyclerView.Adapte
                 itemView.title.text = title
                 itemView.subreddit.text = subredditPrefixed
                 itemView.userName.text = author
-                itemView.timestamp.text = DateUtils.getTimeLeftReadable(Date(created_utc))
+                itemView.timestamp.text = DateUtils.getTimeLeftReadable(created_utc)
                 Glide.with(itemView)
                         .load(url)
                         .into(itemView.image)
@@ -48,5 +48,7 @@ class PostAdapter(val onItemClicked: (url:String) -> Unit) : RecyclerView.Adapte
             }
         }
 
+
     }
+
 }

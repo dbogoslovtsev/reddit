@@ -7,20 +7,18 @@ class DateUtils {
 
     companion object {
 
-        fun getTimeLeftReadable(date: Date): String {
-            val currentTime = Calendar.getInstance().timeInMillis
+        fun getTimeLeftReadable(dateInMillis: Long): String {
+            val currentTime = Calendar.getInstance().timeInMillis / 1000
 
-            val diff = currentTime - date.time
-            val diffMinutes = diff / (60 * 1000) % 60
-            val diffHours = diff / (60 * 60 * 1000)
-            val diffInDays = (diff / (1000 * 60 * 60 * 24)).toInt()
+            val diff = currentTime - dateInMillis
+            val diffMinutes = diff / 60 % 60
+            val diffHours = diff / (60 * 60)
+            val diffInDays = (diff / (60 * 60 * 24)).toInt()
 
-            if (diffInDays > 1) {
-                return "$diffInDays d"
-            } else if (diffHours > 24) {
-                return "$diffHours h"
-            } else {
-                return "$diffMinutes m"
+            return when {
+                diffInDays > 1 -> "$diffInDays d"
+                diffHours > 1 -> "$diffHours h"
+                else -> "$diffMinutes m"
             }
         }
 
