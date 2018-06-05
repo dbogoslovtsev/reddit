@@ -4,11 +4,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.DrawableImageViewTarget
 import com.example.domain.entity.DataWrapper
 import com.example.domain.entity.Post
 import com.example.reddit.R
+import com.example.reddit.glide.GlideApp
 import com.example.reddit.presentation.utils.DateUtils
 import kotlinx.android.synthetic.main.item_post.view.*
 
@@ -47,11 +48,15 @@ class PostAdapter(val onItemClicked: (url: String) -> Unit,
                 itemView.rating.text = score
                 itemView.comments.text = num_comments
 
-                Glide.with(itemView).apply {
+
+                GlideApp.with(itemView).apply {
                     if (url.contains("gif")) {
                         asGif()
                     }
-                }.load(url).into(DrawableImageViewTarget(itemView.image))
+                    load(url)
+                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                            .into(DrawableImageViewTarget(itemView.image))
+                }
 
                 itemView.title.setOnClickListener { onItemClicked.invoke(url) }
                 itemView.image.setOnClickListener { onItemClicked.invoke(url) }
