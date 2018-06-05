@@ -10,7 +10,6 @@ import com.example.domain.entity.Post
 import com.example.reddit.R
 import com.example.reddit.presentation.utils.DateUtils
 import kotlinx.android.synthetic.main.item_post.view.*
-import java.util.*
 
 class PostAdapter(val onItemClicked: (url: String) -> Unit) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
@@ -41,9 +40,13 @@ class PostAdapter(val onItemClicked: (url: String) -> Unit) : RecyclerView.Adapt
                 itemView.subreddit.text = subredditPrefixed
                 itemView.userName.text = author
                 itemView.timestamp.text = DateUtils.getTimeLeftReadable(created_utc)
+                itemView.rating.text = score
+                itemView.comments.text = num_comments
+
                 Glide.with(itemView)
                         .load(url)
                         .into(itemView.image)
+
                 itemView.postFrame.setOnClickListener { onItemClicked.invoke(url) }
             }
         }

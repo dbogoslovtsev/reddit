@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/postFrame"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:foreground="?android:attr/selectableItemBackground">
 
@@ -59,6 +59,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="@dimen/padding_half"/>
+
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_marginStart="@dimen/padding_default"
+        android:drawableStart="@drawable/ic_thumbs_up_down_black_24dp"
+        android:drawablePadding="@dimen/padding_half"
+        android:layout_marginBottom="@dimen/padding_half"
+        tools:text="313"/>
+
+    <TextView
+        android:id="@+id/comments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/padding_default"
+        android:drawableStart="@drawable/ic_comment_black_24dp"
+        android:drawablePadding="@dimen/padding_half"
+        tools:text="72"/>
 
 </RelativeLayout>
