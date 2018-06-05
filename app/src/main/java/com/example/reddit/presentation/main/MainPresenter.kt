@@ -6,7 +6,7 @@ import com.example.domain.usecase.GetTopPostsUc
 import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
-class MainPresenter @Inject constructor(val getTopPostsUc: GetTopPostsUc) : MainContract.Presenter {
+class MainPresenter @Inject constructor(private val getTopPostsUc: GetTopPostsUc) : MainContract.Presenter {
 
     private var view: MainContract.View? = null
 
@@ -16,8 +16,8 @@ class MainPresenter @Inject constructor(val getTopPostsUc: GetTopPostsUc) : Main
 
     override fun getTopPosts(after: String?) {
         getTopPostsUc.execute(object : DisposableSingleObserver<List<DataWrapper<Post>>>() {
-            override fun onSuccess(t: List<DataWrapper<Post>>) {
-                view?.renderError("Top posts loaded successfully")
+            override fun onSuccess(posts: List<DataWrapper<Post>>) {
+                view?.renderPosts(posts)
             }
 
             override fun onError(e: Throwable) {
