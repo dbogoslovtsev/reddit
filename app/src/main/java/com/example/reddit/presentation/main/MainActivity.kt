@@ -10,6 +10,7 @@ import com.example.domain.entity.DataWrapper
 import com.example.domain.entity.Post
 import com.example.reddit.R
 import com.example.reddit.RedditApplication
+import com.example.reddit.customview.HorizontalItemDecorator
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -19,14 +20,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     @JvmField
     var presenter: MainContract.Presenter? = null
 
-    val adapter = PostAdapter(::onItemClicked)
+    val adapter = PostAdapter(::onItemClicked, ::onLastPostReached)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         postsRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        postsRv.addItemDecoration(HorizontalItemDecorator(resources.getDimensionPixelSize(R.dimen.padding_half).toInt()))
+        postsRv.addItemDecoration(HorizontalItemDecorator(resources.getDimensionPixelSize(R.dimen.padding_half)))
         postsRv.adapter = adapter
 
         RedditApplication.appComponent.inject(this)
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
                 .launchUrl(this, Uri.parse(url))
     }
 
-    private fun onLastPostReached(postId: String) {
+    private fun onLastPostReached(postId: String?) {
         presenter?.getTopPosts(postId)
     }
 

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/postFrame"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:background="@android:color/white">
 
     <TextView
         android:id="@+id/subreddit"
@@ -52,14 +50,16 @@
         android:layout_marginTop="@dimen/padding_half"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         tools:text="Title" />
 
-    <ImageView
+    <com.example.reddit.customview.DynamicImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:layout_marginBottom="@dimen/padding_half"/>
 
     <TextView

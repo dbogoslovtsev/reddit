@@ -1,4 +1,4 @@
-package com.example.reddit.presentation.main
+package com.example.reddit.customview
 
 
 import android.graphics.Rect

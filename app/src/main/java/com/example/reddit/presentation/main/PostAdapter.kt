@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.DrawableImageViewTarget
 import com.example.domain.entity.DataWrapper
 import com.example.domain.entity.Post
 import com.example.reddit.R
 import com.example.reddit.presentation.utils.DateUtils
 import kotlinx.android.synthetic.main.item_post.view.*
 
-class PostAdapter(val onItemClicked: (url: String) -> Unit) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class PostAdapter(val onItemClicked: (url: String) -> Unit,
+                  private val onLastPostReached: (url: String?) -> Unit) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     var posts: MutableList<DataWrapper<Post>> = mutableListOf()
 
@@ -24,6 +26,8 @@ class PostAdapter(val onItemClicked: (url: String) -> Unit) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
+        val currentPost = posts[position]
+        if (position == posts.size - 1) onLastPostReached.invoke(currentPost.data?.id)
         holder.bindPost(posts[position])
     }
 
@@ -43,11 +47,14 @@ class PostAdapter(val onItemClicked: (url: String) -> Unit) : RecyclerView.Adapt
                 itemView.rating.text = score
                 itemView.comments.text = num_comments
 
-                Glide.with(itemView)
-                        .load(url)
-                        .into(itemView.image)
+                Glide.with(itemView).apply {
+                    if (url.contains("gif")) {
+                        asGif()
+                    }
+                }.load(url).into(DrawableImageViewTarget(itemView.image))
 
-                itemView.postFrame.setOnClickListener { onItemClicked.invoke(url) }
+                itemView.title.setOnClickListener { onItemClicked.invoke(url) }
+                itemView.image.setOnClickListener { onItemClicked.invoke(url) }
             }
         }
 
