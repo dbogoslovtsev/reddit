@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setContentView(R.layout.activity_main)
 
         postsRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        postsRv.addItemDecoration(HorizontalItemDecorator(resources.getDimensionPixelSize(R.dimen.padding_half).toInt()))
         postsRv.adapter = adapter
 
         RedditApplication.appComponent.inject(this)
