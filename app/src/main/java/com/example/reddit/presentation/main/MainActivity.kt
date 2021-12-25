@@ -2,10 +2,10 @@ package com.example.reddit.presentation.main
 
 import android.net.Uri
 import android.os.Bundle
-import android.support.customtabs.CustomTabsIntent
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.entity.DataWrapper
 import com.example.domain.entity.Post
 import com.example.reddit.R
