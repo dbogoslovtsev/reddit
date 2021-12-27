@@ -1,13 +1,13 @@
-package com.example.data.response
+package com.domain.entity
 
 import com.google.gson.annotations.SerializedName
 
-class BaseResponse<Data> {
+class DataWrapper<Type> {
 
     @SerializedName("kind")
     val kind: String = ""
 
     @SerializedName("data")
-    val data: Data? = null
+    val data: Type? = null
 
 }

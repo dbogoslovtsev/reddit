@@ -1,8 +1,8 @@
-package com.example.data.interceptor
+package com.data.interceptor
 
-import com.example.data.OauthRetrofitService
-import com.example.data.response.OauthResponse
-import com.example.domain.keystore.KeyStore
+import com.data.OauthRetrofitService
+import com.data.response.OauthResponse
+import com.domain.keystore.KeyStore
 import okhttp3.Interceptor
 import okhttp3.Response
 import retrofit2.Call

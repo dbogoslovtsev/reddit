@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.DrawableImageViewTarget
-import com.example.domain.entity.DataWrapper
-import com.example.domain.entity.Post
-import com.example.reddit.R
+import com.domain.entity.DataWrapper
+import com.domain.entity.Post
+import com.reddit.R
 import com.reddit.glide.GlideApp
 import com.reddit.presentation.utils.DateUtils
 import kotlinx.android.synthetic.main.item_post.view.*

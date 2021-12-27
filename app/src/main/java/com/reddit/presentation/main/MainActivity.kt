@@ -6,9 +6,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.domain.entity.DataWrapper
-import com.example.domain.entity.Post
-import com.example.reddit.R
+import com.domain.entity.DataWrapper
+import com.domain.entity.Post
+import com.reddit.R
 import com.reddit.customview.HorizontalItemDecorator
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject

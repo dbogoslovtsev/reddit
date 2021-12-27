@@ -1,6 +1,6 @@
-package com.example.data.interceptor
+package com.data.interceptor
 
-import com.example.domain.keystore.KeyStore
+import com.domain.keystore.KeyStore
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException

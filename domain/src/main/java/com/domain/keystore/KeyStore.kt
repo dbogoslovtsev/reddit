@@ -1,4 +1,4 @@
-package com.example.domain.keystore
+package com.domain.keystore
 
 interface KeyStore {
 

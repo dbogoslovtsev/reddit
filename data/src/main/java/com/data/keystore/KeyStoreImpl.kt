@@ -1,7 +1,7 @@
-package com.example.data.keystore
+package com.data.keystore
 
 import android.content.SharedPreferences
-import com.example.domain.keystore.KeyStore
+import com.domain.keystore.KeyStore
 
 private const val TOKEN_PREF = "tokenPref"
 

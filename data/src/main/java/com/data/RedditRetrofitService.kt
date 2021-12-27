@@ -1,7 +1,7 @@
-package com.example.data
+package com.data
 
-import com.example.data.response.BaseResponse
-import com.example.domain.entity.TopPosts
+import com.data.response.BaseResponse
+import com.domain.entity.TopPosts
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

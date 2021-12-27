@@ -2,8 +2,8 @@ package com.reddit.di.module
 
 import android.content.Context
 import android.preference.PreferenceManager
-import com.example.data.keystore.KeyStoreImpl
-import com.example.domain.keystore.KeyStore
+import com.data.keystore.KeyStoreImpl
+import com.domain.keystore.KeyStore
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

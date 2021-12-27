@@ -1,4 +1,4 @@
-package com.example.domain.usecase.base;
+package com.domain.usecase.base;
 
 
 import com.shark.radio.usecase.executor.UIExecutionThread;

@@ -1,6 +1,6 @@
-package com.example.data
+package com.data
 
-import com.example.data.response.OauthResponse
+import com.data.response.OauthResponse
 import retrofit2.Call
 import retrofit2.http.*
 

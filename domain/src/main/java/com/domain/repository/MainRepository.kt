@@ -1,7 +1,7 @@
-package com.example.domain.repository
+package com.domain.repository
 
-import com.example.domain.entity.Post
-import com.example.domain.entity.DataWrapper
+import com.domain.entity.Post
+import com.domain.entity.DataWrapper
 import io.reactivex.Single
 
 interface MainRepository {

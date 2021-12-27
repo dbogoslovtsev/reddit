@@ -1,7 +1,7 @@
-package com.example.data.interceptor
+package com.data.interceptor
 
 import android.util.Base64
-import com.example.data.RetrofitConfig
+import com.data.RetrofitConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 

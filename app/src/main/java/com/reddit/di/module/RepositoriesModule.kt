@@ -1,8 +1,8 @@
 package com.reddit.di.module
 
-import com.example.data.MainRepositoryImpl
-import com.example.data.RedditRetrofitService
-import com.example.domain.repository.MainRepository
+import com.data.MainRepositoryImpl
+import com.data.RedditRetrofitService
+import com.domain.repository.MainRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

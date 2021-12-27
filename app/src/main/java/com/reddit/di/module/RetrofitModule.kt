@@ -1,13 +1,13 @@
 package com.reddit.di.module
 
 
-import com.example.data.OauthRetrofitService
-import com.example.data.RedditRetrofitService
-import com.example.data.RetrofitConfig
-import com.example.data.interceptor.HeaderInterceptor
-import com.example.data.interceptor.OauthHeaderInterceptor
-import com.example.data.interceptor.TokenRefreshInterceptor
-import com.example.domain.keystore.KeyStore
+import com.data.OauthRetrofitService
+import com.data.RedditRetrofitService
+import com.data.RetrofitConfig
+import com.data.interceptor.HeaderInterceptor
+import com.data.interceptor.OauthHeaderInterceptor
+import com.data.interceptor.TokenRefreshInterceptor
+import com.domain.keystore.KeyStore
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.reddit.di.qualifier.OauthQualifier
@@ -51,7 +51,8 @@ open class RetrofitModule {
     @Singleton
     @Provides
     fun provideTokenRefreshInterceptor(oauthRetrofit: OauthRetrofitService,
-                                       keyStore: KeyStore): TokenRefreshInterceptor {
+                                       keyStore: KeyStore
+    ): TokenRefreshInterceptor {
         return TokenRefreshInterceptor(oauthRetrofit, keyStore)
     }
 
@@ -77,7 +78,8 @@ open class RetrofitModule {
     @Provides
     fun provideClientBuilder(loggingInterceptor: HttpLoggingInterceptor,
                              headerInterceptor: HeaderInterceptor,
-                             tokenRefreshInterceptor: TokenRefreshInterceptor): OkHttpClient.Builder {
+                             tokenRefreshInterceptor: TokenRefreshInterceptor
+    ): OkHttpClient.Builder {
         return OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .addInterceptor(headerInterceptor)
@@ -90,7 +92,8 @@ open class RetrofitModule {
     @OauthQualifier
     @Provides
     fun provideOauthClientBuilder(loggingInterceptor: HttpLoggingInterceptor,
-                                  oauthHeaderInterceptor: OauthHeaderInterceptor): OkHttpClient.Builder {
+                                  oauthHeaderInterceptor: OauthHeaderInterceptor
+    ): OkHttpClient.Builder {
         return OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .addInterceptor(oauthHeaderInterceptor)

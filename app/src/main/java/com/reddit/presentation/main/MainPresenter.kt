@@ -1,8 +1,8 @@
 package com.reddit.presentation.main
 
-import com.example.domain.entity.Post
-import com.example.domain.entity.DataWrapper
-import com.example.domain.usecase.GetTopPostsUc
+import com.domain.entity.Post
+import com.domain.entity.DataWrapper
+import com.domain.usecase.GetTopPostsUc
 import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
