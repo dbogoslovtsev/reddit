@@ -18,7 +18,7 @@ class MainPresenter @Inject constructor(
             }
 
             override fun onError(e: Throwable) {
-                view.renderError(e.localizedMessage)
+                view.renderError(e.localizedMessage!!)
             }
         }, GetTopPostsUc.Params(after))
     }
