@@ -1,202 +1,80 @@
 ext {
-    /** Android build variables **/
+    /** Android variables **/
     minSdk = 23
     compileSdk = 31
-    versionCode = 1050
-    versionName = '2.9.0'
+    versionCode = 1
+    versionName = '0.1'
     buildTools = '30.0.2'
-
-    /** Libs and tools variables **/
+    applicationId = 'com.reddit.app'
     build_gradle_tools_version = '7.0.4'
 
     /** Kotlin **/
-    kotlin_version = '1.6.0'
-    coroutines_version = '1.5.1-native-mt'
-    jetbrains_annotations_version = '21.0.1'
+    kotlin_version = '1.6.10'
 
     /** General **/
-    dagger_version = '2.39'
+    dagger_version = '2.40.5'
+
+    /** RxJava **/
+    rx_java_version = '2.2.21'
+    rx_android_version = '2.1.1'
 
     /** Presentation **/
-    lifecycle_version = '2.3.1'
-    appcompat_version = '1.3.1'
-    constraint_layout_version = '2.1.0'
-    swipe_refresh_layuout_version = '1.1.0'
-    card_view_version = '1.0.0'
-    activity_version = '1.3.1'
-    fragment_version = '1.4.0'
-    material_library_version = '1.4.0'
-    vision_version = '20.1.3'
-    simplesearchview_version = '0.1.5'
-    circleprogress_version = '1.2.1'
-    lottie_version = '4.0.0'
-    shimmer_version = '0.5.0'
-    decoro_version = '1.5.0'
-    recycler_version = '1.2.1'
-    viewpager2_version = "1.0.0"
-    view_binding_property_delegate = '1.4.7'
     glide_version = '4.12.0'
-    desugar_version = '1.1.5'
-
-    /** Remote **/
-    retrofit_version = '2.9.0'
-    okhttp_version = '4.9.1'
-    gson_version = '2.8.7'
-
-    /** Local **/
-    room_version = '2.3.0'
-    sqlcipher_version = '4.4.2'
-    data_store_version = '1.0.0'
-
-    /** Tests **/
-    junit_version = '4.13.2'
-    junit_ktx_version = '1.1.3'
-    mockk_version = '1.12.0'
-    kotlinx_coroutines_test_version = '1.5.1-native-mt'
-    android_core_testing_version = '2.1.0'
-
-    /** Tools and utils **/
-    leak_cannary_version = '2.7'
-    security_crypto = '1.1.0-alpha03'
-    timber_version = '4.7.1'
-    adapterdelegates4 = '4.1.1'
-    work_runtime = '2.7.0'
-    ucrop = '2.2.6-native'
-
-    /** Firebase **/
-    firebase_appdistribution_version = '2.1.3'
-    firebase_crashlytics_version = '18.2.1'
-    firebase_crashlytics_gradle_version = '2.5.2'
-
-    // Analytics
-    firebase_analytics_version = '19.0.0'
-    segment_version = '4.10.0'
-
-    /** Play Services **/
-    google_services_version = '4.3.5'
-    google_places_version = '2.5.0'
-
-    /** Root checker **/
-    rootbeer_version = '0.1.0'
+    appcompat_version = '1.4.0'
+    constraint_layout_version = '2.1.2'
+    swipe_refresh_layuout_version = '1.1.0'
+    recycler_version = '1.2.1'
 
     /** Browser **/
     browser_version = '1.3.0'
 
-    // presentation
-    photoview_version = '2.3.0'
+    /** Remote **/
+    retrofit_version = '2.9.0'
+    okhttp_version = '4.9.1'
 
-       dependencies = [
+    /** Tools and utils **/
+    leak_cannary_version = '2.7'
+    timber_version = '4.7.1'
+
+    dependencies = [
             // Gradle
             gradleTools              : "com.android.tools.build:gradle:$build_gradle_tools_version",
+            kotlinGradlePlugin       : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version",
 
             // Kotlin
             kotlin                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
-            kotlinReflect            : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
-            kotlinGradle             : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version",
-            jetbrainsAnnotations     : "org.jetbrains:annotations:$jetbrains_annotations_version",
-
-            // Kotlin coroutines
-            coroutinesCore           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version",
-            coroutinesAndroid        : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
 
             // Dagger
             dagger                   : "com.google.dagger:dagger:$dagger_version",
             daggerCompiler           : "com.google.dagger:dagger-compiler:$dagger_version",
 
-            coreKtx                  : "androidx.core:core-ktx:$ktx_version",
-
-            // Lifecycle
-            lifecycleRuntime         : "androidx.lifecycle:lifecycle-runtime:$lifecycle_version",
-            lifecycleRuntimeKtx      : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
-            lifecycleProcess         : "androidx.lifecycle:lifecycle-process:$lifecycle_version",
-            lifecycleLivedataKtx     : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
-            lifecycleViewModelKtx    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+            //RxJava
+            rxJava                   : "io.reactivex.rxjava2:rxjava:$rx_java_version",
+            rxAndroid                : "io.reactivex.rxjava2:rxandroid:$rx_android_version",
 
             // Ui
             appcompat                : "androidx.appcompat:appcompat:$appcompat_version",
             constraintLayout         : "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
+            recyclerView             : "androidx.recyclerview:recyclerview:$recycler_version",
             swipeRefreshLayout       : "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layuout_version",
-            cardView                 : "androidx.cardview:cardview:$card_view_version",
-            activityKtx              : "androidx.activity:activity-ktx:$activity_version",
-            fragmentKtx              : "androidx.fragment:fragment-ktx:$fragment_version",
-            material                 : "com.google.android.material:material:$material_library_version",
-            playServicesVision       : "com.google.android.gms:play-services-vision:$vision_version",
-            simpleSearchView         : "com.github.Ferfalk:SimpleSearchView:$simplesearchview_version",
-            circleProgress           : "com.github.lzyzsd:circleprogress:$circleprogress_version",
-            lottie                   : "com.airbnb.android:lottie:$lottie_version",
-            facebookShimmer          : "com.facebook.shimmer:shimmer:$shimmer_version",
-            decoro                   : "ru.tinkoff.decoro:decoro:$decoro_version",
-            viewPager2               : "androidx.viewpager2:viewpager2:$viewpager2_version",
-            recycler                 : "androidx.recyclerview:recyclerview:$recycler_version",
-            viewBindingDelegate      : "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$view_binding_property_delegate",
-            adapterdelegates4        : "com.hannesdorfmann:adapterdelegates4:$adapterdelegates4",
-            ucrop                    : "com.github.yalantis:ucrop:$ucrop",
 
-            // Database
-            roomRuntime              : "androidx.room:room-runtime:$room_version",
-            roomCompiler             : "androidx.room:room-compiler:$room_version",
-            roomKtx                  : "androidx.room:room-ktx:$room_version",
-            sqlcipher                : "net.zetetic:android-database-sqlcipher:$sqlcipher_version",
-
-            // Security crypto
-            securityCrypto           : "androidx.security:security-crypto:$security_crypto",
-
-            // Data Store
-            dataStore                : "androidx.datastore:datastore-preferences:$data_store_version",
-
-            // Firebase
-            firebaseCrashlytics      : "com.google.firebase:firebase-crashlytics:$firebase_crashlytics_version",
-            firebaseCrashlyticsGradle: "com.google.firebase:firebase-crashlytics-gradle:$firebase_crashlytics_gradle_version",
-            firebaseAppDistribution  : "com.google.firebase:firebase-appdistribution-gradle:$firebase_appdistribution_version",
-            // Analytics
-            firebaseAnalytics        : "com.google.firebase:firebase-analytics:$firebase_analytics_version",
-            firebaseAnalyticsKtx     : "com.google.firebase:firebase-analytics-ktx:$firebase_analytics_version",
-            segmentAnalytics         : "com.segment.analytics.android:analytics:$segment_version",
+            // Browser
+            browser                  : "androidx.browser:browser:$browser_version",
 
             // Rest
             retrofit                 : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            retrofitAdapterRxJava    : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
             retrofitConverterGson    : "com.squareup.retrofit2:converter-gson:$retrofit_version",
-            retrofitConverterScalars : "com.squareup.retrofit2:converter-scalars:$retrofit_version",
-            okHttp                   : "com.squareup.okhttp3:okhttp:$okhttp_version",
             okHttpLoggingInterceptor : "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
-            gson                     : "com.google.code.gson:gson:$gson_version",
 
             // Glide
             glide                    : "com.github.bumptech.glide:glide:$glide_version",
             glideCompiler            : "com.github.bumptech.glide:compiler:$glide_version",
 
-            // Play Services
-            googleServices           : "com.google.gms:google-services:$google_services_version",
-            googlePlaces                   : "com.google.android.libraries.places:places:$google_places_version",
-
-            // Test
-            junit                    : "junit:junit:$junit_version",
-            junitKtx                 : " androidx.test.ext:junit-ktx:$junit_ktx_version",
-
-            kotlinCoroutinesTest     : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_test_version",
-            androidCoreTesting       : "androidx.arch.core:core-testing:$android_core_testing_version",
-            kotlinTest               : "org.jetbrains.kotlin:kotlin-test",
-            mockk                    : "io.mockk:mockk:$mockk_version",
-
             // Tools and utils
             leakcanary               : "com.squareup.leakcanary:leakcanary-android:$leak_cannary_version",
 
-            //API31 PendingIntent Crash fix
-            workRuntime              : "androidx.work:work-runtime-ktx:$work_runtime",
-
             // Logging
             timber                   : "com.jakewharton.timber:timber:$timber_version",
-
-            // Root checker
-            rootbeer                 : "com.scottyab:rootbeer-lib:$rootbeer_version",
-
-            // Browser
-            browser                  : "androidx.browser:browser:$browser_version",
-
-            //Desugaring
-            desugaring               : "com.android.tools:desugar_jdk_libs:$desugar_version",
-
-            // PDF viewer
-            photoView                : "com.github.chrisbanes:PhotoView:$photoview_version",
-     ]
+    ]
 }

@@ -5,14 +5,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
-
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 31
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.compileSdk
+        compileSdkVersion rootProject.ext.compileSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
 
     buildTypes {
@@ -27,13 +25,13 @@ android {
 dependencies {
     implementation project(':domain')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation rootProject.ext.dependencies.kotlin
 
-    kapt 'com.google.dagger:dagger-compiler:2.40.5'
+    kapt rootProject.ext.dependencies.daggerCompiler
 
-    api 'com.squareup.retrofit2:retrofit:2.9.0'
-    api 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
-    api 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3'
+    api rootProject.ext.dependencies.retrofit
+    api rootProject.ext.dependencies.retrofitAdapterRxJava
+    api rootProject.ext.dependencies.okHttpLoggingInterceptor
 }
 repositories {
     mavenCentral()
