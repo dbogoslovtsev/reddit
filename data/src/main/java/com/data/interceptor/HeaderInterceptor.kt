@@ -5,7 +5,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
 
-class HeaderInterceptor constructor(val keyStore: KeyStore) : Interceptor {
+class HeaderInterceptor constructor(private val keyStore: KeyStore) : Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {

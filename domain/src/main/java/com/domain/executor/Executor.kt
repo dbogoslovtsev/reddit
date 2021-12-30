@@ -1,4 +1,4 @@
-package com.shark.radio.usecase.executor
+package com.domain.executor
 
 
 import io.reactivex.Scheduler

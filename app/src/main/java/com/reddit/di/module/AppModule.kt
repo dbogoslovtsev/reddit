@@ -2,17 +2,24 @@ package com.reddit.di.module
 
 import android.app.Application
 import android.content.Context
+import com.di.ApplicationProvider
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-open class AppModule constructor(private val application: Application) {
+class AppModule {
 
     @Singleton
     @Provides
-    fun provideAppContext(): Context {
-        return application
+    fun provideAppContext(appProvider: ApplicationProvider): Context {
+        return appProvider.getApplicationContext()
+    }
+
+    @Singleton
+    @Provides
+    fun provideApplication(appProvider: ApplicationProvider): Application {
+        return appProvider.getApplication()
     }
 
 }

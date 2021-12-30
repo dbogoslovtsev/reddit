@@ -1,7 +1,7 @@
 package com.reddit.di.executor
 
 
-import com.shark.radio.usecase.executor.WorkExecutionThread
+import com.domain.executor.WorkExecutionThread
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 

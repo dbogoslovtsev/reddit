@@ -1,16 +1,16 @@
 package com.reddit.di.module
 
 
+import com.domain.executor.UIExecutionThread
+import com.domain.executor.WorkExecutionThread
 import com.reddit.di.executor.IOWorkThread
 import com.reddit.di.executor.UIThread
-import com.shark.radio.usecase.executor.UIExecutionThread
-import com.shark.radio.usecase.executor.WorkExecutionThread
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-open class ExecutionThreadsModule {
+class ExecutionThreadsModule {
 
     @Provides
     @Singleton

@@ -8,11 +8,11 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-open class RepositoriesModule {
+class RepositoriesModule {
 
     @Provides
     @Singleton
-    fun provideMainRepository(redditRetrofit: RedditRetrofitService): MainRepository {
+    fun bindMainRepository(redditRetrofit: RedditRetrofitService): MainRepository {
         return MainRepositoryImpl(redditRetrofit)
     }
 }

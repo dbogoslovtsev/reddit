@@ -1,8 +1,8 @@
 package com.domain.usecase.base;
 
 
-import com.shark.radio.usecase.executor.UIExecutionThread;
-import com.shark.radio.usecase.executor.WorkExecutionThread;
+import com.domain.executor.UIExecutionThread;
+import com.domain.executor.WorkExecutionThread;
 
 import io.reactivex.Completable;
 import io.reactivex.CompletableTransformer;
