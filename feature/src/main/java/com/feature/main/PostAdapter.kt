@@ -8,15 +8,15 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.DrawableImageViewTarget
 import com.domain.entity.DataWrapper
 import com.domain.entity.Post
-import com.presentation.glide.GlideApp
-import com.presentation.utils.DateUtils
+import com.core.glide.GlideApp
+import com.core.utils.DateUtils
 import com.reddit.feature.R
 import kotlinx.android.synthetic.main.item_post.view.*
 
 class PostAdapter(val onItemClicked: (url: String) -> Unit,
                   private val onLastPostReached: (url: String?) -> Unit) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
-    var posts: MutableList<DataWrapper<Post>> = mutableListOf()
+    private var posts: MutableList<DataWrapper<Post>> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         return PostViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_post, parent, false))
