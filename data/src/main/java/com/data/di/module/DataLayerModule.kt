@@ -13,6 +13,7 @@ import com.data.interceptor.OauthHeaderInterceptor
 import com.data.interceptor.TokenRefreshInterceptor
 import com.data.keystore.KeyStoreImpl
 import com.domain.di.qualifier.OauthQualifier
+import com.domain.di.scope.ApplicationScope
 import com.domain.executor.UIExecutionThread
 import com.domain.executor.WorkExecutionThread
 import com.domain.keystore.KeyStore
@@ -45,7 +46,7 @@ class RepositoryModule {
 class KeyStoreModule {
 
     @Provides
-    @Singleton
+    @ApplicationScope
     fun provideKeyStore(appContext: Context): KeyStore {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(appContext)
         return KeyStoreImpl(sharedPreferences)
@@ -56,11 +57,11 @@ class KeyStoreModule {
 class ExecutionThreadsModule {
 
     @Provides
-    @Singleton
+    @ApplicationScope
     fun provideUiExecutionThread(): UIExecutionThread = UIThread()
 
     @Provides
-    @Singleton
+    @ApplicationScope
     fun provideWorkExecutionThread(): WorkExecutionThread = IOWorkThread()
 }
 
@@ -68,7 +69,6 @@ class ExecutionThreadsModule {
 class RetrofitModule {
 
     //Interceptors
-    @Singleton
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         val loggingInterceptor = HttpLoggingInterceptor()
@@ -76,19 +76,16 @@ class RetrofitModule {
         return loggingInterceptor
     }
 
-    @Singleton
     @Provides
     fun provideHeaderInterceptor(keyStore: KeyStore): HeaderInterceptor {
         return HeaderInterceptor(keyStore)
     }
 
-    @Singleton
     @Provides
     fun provideOauthHeaderInterceptor(): OauthHeaderInterceptor {
         return OauthHeaderInterceptor()
     }
 
-    @Singleton
     @Provides
     fun provideTokenRefreshInterceptor(
         oauthRetrofit: OauthRetrofitService,
@@ -99,22 +96,20 @@ class RetrofitModule {
 
 
     // Retrofit services
-    @Singleton
+    @ApplicationScope
     @Provides
     fun provideRedditRetrofitService(retrofit: Retrofit): RedditRetrofitService {
         return retrofit.create(RedditRetrofitService::class.java)
     }
 
-    @Singleton
+    @ApplicationScope
     @Provides
     fun provideOauthRetrofitService(@OauthQualifier retrofit: Retrofit): OauthRetrofitService {
-
         return retrofit.create(OauthRetrofitService::class.java)
     }
 
 
     //OkHttp clients
-    @Singleton
     @Provides
     fun provideClientBuilder(
         loggingInterceptor: HttpLoggingInterceptor,
@@ -144,7 +139,6 @@ class RetrofitModule {
             .writeTimeout(RetrofitConfig.WRITE_TIMEOUT_SECONDS, TimeUnit.SECONDS)
     }
 
-    @Singleton
     @Provides
     fun provideOkHttpClient(baseBuilder: OkHttpClient.Builder): OkHttpClient {
         return baseBuilder.build()
@@ -158,19 +152,16 @@ class RetrofitModule {
 
 
     //Factories
-    @Singleton
     @Provides
     fun provideConverterFactory(gson: Gson): Converter.Factory {
         return GsonConverterFactory.create(gson)
     }
 
-    @Singleton
     @Provides
     fun provideAdapterFactory(): CallAdapter.Factory {
         return RxJava2CallAdapterFactory.create()
     }
 
-    @Singleton
     @Provides
     fun provideGson(): Gson {
         return GsonBuilder().create()
@@ -178,7 +169,6 @@ class RetrofitModule {
 
 
     //Retrofits
-    @Singleton
     @Provides
     fun provideRetrofitBuilder(
         callAdapterFactory: CallAdapter.Factory,
@@ -190,7 +180,7 @@ class RetrofitModule {
 
     }
 
-    @Singleton
+    @ApplicationScope
     @Provides
     fun redditRetrofit(
         retrofitBuilder: Retrofit.Builder,
@@ -202,6 +192,7 @@ class RetrofitModule {
             .build()
     }
 
+    @ApplicationScope
     @OauthQualifier
     @Provides
     fun oauthRetrofit(

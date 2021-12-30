@@ -1,6 +1,6 @@
 package com.feature.main.di
 
-import com.core.di.scope.ActivityScope
+import com.domain.di.scope.ActivityScope
 import com.feature.main.MainActivity
 import com.feature.main.MainContract
 import com.feature.main.MainPresenter

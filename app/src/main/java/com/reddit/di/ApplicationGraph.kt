@@ -1,7 +1,7 @@
 package com.reddit.di
 
 import android.content.Context
-import com.core.di.scope.ApplicationScope
+import com.domain.di.scope.ApplicationScope
 import com.data.di.module.ExecutionThreadsModule
 import com.data.di.module.KeyStoreModule
 import com.data.di.module.RepositoryModule
