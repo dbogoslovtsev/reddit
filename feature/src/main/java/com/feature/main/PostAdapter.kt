@@ -1,25 +1,26 @@
 package com.feature.main
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.DrawableImageViewTarget
-import com.domain.entity.DataWrapper
-import com.domain.entity.Post
 import com.core.glide.GlideApp
 import com.core.utils.DateUtils
-import com.reddit.feature.R
-import kotlinx.android.synthetic.main.item_post.view.*
+import com.domain.entity.DataWrapper
+import com.domain.entity.Post
+import com.reddit.feature.databinding.ItemPostBinding
 
-class PostAdapter(val onItemClicked: (url: String) -> Unit,
-                  private val onLastPostReached: (url: String?) -> Unit) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class PostAdapter(
+    val onItemClicked: (url: String) -> Unit,
+    private val onLastPostReached: (url: String?) -> Unit
+) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     private var posts: MutableList<DataWrapper<Post>> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        return PostViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_post, parent, false))
+        return PostViewHolder(ItemPostBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun getItemCount(): Int {
@@ -37,33 +38,33 @@ class PostAdapter(val onItemClicked: (url: String) -> Unit,
         notifyItemRangeInserted(posts.size - newPosts.size, newPosts.size)
     }
 
-    inner class PostViewHolder(layout: View) : RecyclerView.ViewHolder(layout) {
+    inner class PostViewHolder(private val binding: ItemPostBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("CheckResult")
         fun bindPost(post: DataWrapper<Post>) {
             post.data?.apply {
-                itemView.title.text = title
-                itemView.subreddit.text = subredditPrefixed
-                itemView.userName.text = author
-                itemView.timestamp.text = DateUtils.getTimeLeftReadable(created_utc)
-                itemView.rating.text = score
-                itemView.comments.text = num_comments
+                binding.title.text = title
+                binding.subreddit.text = subredditPrefixed
+                binding.userName.text = author
+                binding.timestamp.text = DateUtils.getTimeLeftReadable(created_utc)
+                binding.rating.text = score
+                binding.comments.text = num_comments
 
                 if (url.contains(".gifv")) url = url.replace(".gifv", ".gif")
-                GlideApp.with(itemView).apply {
+                GlideApp.with(binding.root.context).apply {
                     if (url.contains("gif")) {
                         asGif()
                     }
                     load(url)
-                            .diskCacheStrategy(DiskCacheStrategy.DATA)
-                            .into(DrawableImageViewTarget(itemView.image))
+                        .diskCacheStrategy(DiskCacheStrategy.DATA)
+                        .into(DrawableImageViewTarget(binding.image))
                 }
 
-                itemView.title.setOnClickListener { onItemClicked.invoke(url) }
-                itemView.image.setOnClickListener { onItemClicked.invoke(url) }
+                binding.title.setOnClickListener { onItemClicked.invoke(url) }
+                binding.image.setOnClickListener { onItemClicked.invoke(url) }
             }
         }
-
-
     }
 
 }

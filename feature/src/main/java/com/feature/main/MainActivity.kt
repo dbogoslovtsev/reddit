@@ -4,19 +4,22 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.core.customview.HorizontalItemDecorator
 import com.domain.entity.DataWrapper
 import com.domain.entity.Post
-import com.core.customview.HorizontalItemDecorator
 import com.feature.main.di.MainComponent
 import com.feature.main.di.MainComponentFactoryProvider
 import com.feature.main.di.MainModule
 import com.reddit.feature.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.reddit.feature.databinding.ActivityMainBinding
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainContract.View {
+
+    private lateinit var binding: ActivityMainBinding
 
     @Inject
     lateinit var presenter: MainContract.Presenter
@@ -24,13 +27,16 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     private val adapter = PostAdapter(::onItemClicked, ::onLastPostReached)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        getMainComponent().inject(this)
         super.onCreate(savedInstanceState)
+        getMainComponent().inject(this)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setContentView(R.layout.activity_main)
 
-        postsRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        postsRv.addItemDecoration(HorizontalItemDecorator(resources.getDimensionPixelSize(R.dimen.padding_half)))
-        postsRv.adapter = adapter
+        binding.postsRv.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.postsRv.addItemDecoration(HorizontalItemDecorator(resources.getDimensionPixelSize(R.dimen.padding_half)))
+        binding.postsRv.adapter = adapter
 
         presenter.getTopPosts(null)
     }
@@ -42,10 +48,13 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     private fun onItemClicked(url: String) {
+        val params = CustomTabColorSchemeParams.Builder()
+            .setToolbarColor(resources.getColor(R.color.colorPrimary, null))
+            .build()
         CustomTabsIntent.Builder()
-                .setToolbarColor(resources.getColor(R.color.colorPrimary))
-                .build()
-                .launchUrl(this, Uri.parse(url))
+            .setDefaultColorSchemeParams(params)
+            .build()
+            .launchUrl(this, Uri.parse(url))
     }
 
     private fun onLastPostReached(postId: String?) {
