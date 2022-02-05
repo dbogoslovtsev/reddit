@@ -39,6 +39,7 @@ class TokenRefreshInterceptor constructor(
                     val builder = request.newBuilder().headers(newHeaders)
                     val retryRequest = builder.build()
 
+                    response.close()
                     response = chain.proceed(retryRequest)
                 }
             } catch (e: Exception) {
