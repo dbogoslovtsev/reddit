@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         getMainComponent().inject(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_main)
 
         binding.postsRv.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
