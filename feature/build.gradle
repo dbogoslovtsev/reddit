@@ -9,8 +9,6 @@ android {
         minSdkVersion rootProject.ext.minSdk
         targetSdkVersion rootProject.ext.compileSdk
         compileSdkVersion rootProject.ext.compileSdk
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
     }
 
     buildTypes {
