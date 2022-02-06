@@ -27,6 +27,8 @@ dependencies {
 
     kapt rootProject.ext.dependencies.daggerCompiler
 
+    api rootProject.ext.dependencies.coroutines
+
     api rootProject.ext.dependencies.retrofit
     api rootProject.ext.dependencies.retrofitAdapterRxJava
     api rootProject.ext.dependencies.okHttpLoggingInterceptor

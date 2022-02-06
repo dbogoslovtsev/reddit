@@ -1,12 +1,12 @@
 package com.reddit.di
 
 import android.content.Context
-import com.domain.di.scope.ApplicationScope
 import com.data.di.module.ExecutionThreadsModule
 import com.data.di.module.KeyStoreModule
 import com.data.di.module.RepositoryModule
 import com.data.di.module.RetrofitModule
 import com.domain.di.module.UseCaseModule
+import com.domain.di.scope.ApplicationScope
 import com.feature.main.di.FeatureModule
 import com.feature.main.di.MainComponent
 import dagger.Component
@@ -18,6 +18,7 @@ import dagger.Provides
     modules = [
         AppModule::class,
         FeatureModule::class,
+        ViewModelModule::class,
         UseCaseModule::class,
         RepositoryModule::class,
         KeyStoreModule::class,

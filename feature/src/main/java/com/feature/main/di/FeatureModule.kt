@@ -1,9 +1,10 @@
 package com.feature.main.di
 
+import androidx.savedstate.SavedStateRegistryOwner
+import com.core.base.BaseViewModel
 import com.domain.di.scope.ActivityScope
 import com.feature.main.MainActivity
-import com.feature.main.MainContract
-import com.feature.main.MainPresenter
+import com.feature.main.MainViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
@@ -11,6 +12,7 @@ import dagger.Subcomponent
 @Module(subcomponents = [MainComponent::class])
 class FeatureModule
 
+/** Main Screen **/
 interface MainComponentFactoryProvider {
     fun provideMainComponentFactory(): MainComponent.Factory
 }
@@ -28,14 +30,15 @@ interface MainComponent {
 }
 
 @Module
-class MainModule(private val activity: MainActivity) {
+class MainModule(private val mainActivity: MainActivity) {
 
     @ActivityScope
     @Provides
-    fun provideMainView(): MainContract.View = activity
+    fun provideSavedStateRegistryOwner(): SavedStateRegistryOwner = mainActivity
 
     @ActivityScope
     @Provides
-    fun provideMainPresenter(presenter: MainPresenter): MainContract.Presenter = presenter
-
+    fun provideMainViewModelClass(): Class<MainViewModel> = MainViewModel::class.java
 }
+
+/** Details Screen **/

@@ -30,6 +30,9 @@ dependencies {
     api rootProject.ext.dependencies.recyclerView
     api rootProject.ext.dependencies.browser
 
+    api rootProject.ext.dependencies.liveDataExtensions
+    api rootProject.ext.dependencies.viewModelExtensions
+
     kapt rootProject.ext.dependencies.daggerCompiler
 
     api rootProject.ext.dependencies.glide

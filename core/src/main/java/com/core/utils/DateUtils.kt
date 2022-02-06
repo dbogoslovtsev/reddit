@@ -7,6 +7,7 @@ class DateUtils {
 
     companion object {
 
+        @JvmStatic
         fun getTimeLeftReadable(dateInMillis: Long): String {
             val currentTime = Calendar.getInstance().timeInMillis / 1000
 
