@@ -23,9 +23,6 @@ android {
 dependencies {
     implementation rootProject.ext.dependencies.kotlin
 
-    api rootProject.ext.dependencies.rxJava
-    api rootProject.ext.dependencies.rxAndroid
-
     api rootProject.ext.dependencies.dagger
     kapt rootProject.ext.dependencies.daggerCompiler
 

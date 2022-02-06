@@ -25,6 +25,8 @@ dependencies {
 
     implementation rootProject.ext.dependencies.kotlin
 
+    api rootProject.ext.dependencies.leakCanary
+
     api rootProject.ext.dependencies.appcompat
     api rootProject.ext.dependencies.constraintLayout
     api rootProject.ext.dependencies.recyclerView

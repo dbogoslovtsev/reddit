@@ -6,16 +6,12 @@ import com.data.MainRepositoryImpl
 import com.data.OauthRetrofitService
 import com.data.RedditRetrofitService
 import com.data.RetrofitConfig
-import com.data.executor.IOWorkThread
-import com.data.executor.UIThread
 import com.data.interceptor.HeaderInterceptor
 import com.data.interceptor.OauthHeaderInterceptor
 import com.data.interceptor.TokenRefreshInterceptor
 import com.data.keystore.KeyStoreImpl
 import com.domain.di.qualifier.OauthQualifier
 import com.domain.di.scope.ApplicationScope
-import com.domain.executor.UIExecutionThread
-import com.domain.executor.WorkExecutionThread
 import com.domain.keystore.KeyStore
 import com.domain.repository.MainRepository
 import com.google.gson.Gson
@@ -24,13 +20,10 @@ import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.CallAdapter
 import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 
 @Module
@@ -51,18 +44,6 @@ class KeyStoreModule {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(appContext)
         return KeyStoreImpl(sharedPreferences)
     }
-}
-
-@Module
-class ExecutionThreadsModule {
-
-    @Provides
-    @ApplicationScope
-    fun provideUiExecutionThread(): UIExecutionThread = UIThread()
-
-    @Provides
-    @ApplicationScope
-    fun provideWorkExecutionThread(): WorkExecutionThread = IOWorkThread()
 }
 
 @Module
@@ -158,11 +139,6 @@ class RetrofitModule {
     }
 
     @Provides
-    fun provideAdapterFactory(): CallAdapter.Factory {
-        return RxJava2CallAdapterFactory.create()
-    }
-
-    @Provides
     fun provideGson(): Gson {
         return GsonBuilder().create()
     }
@@ -171,13 +147,10 @@ class RetrofitModule {
     //Retrofits
     @Provides
     fun provideRetrofitBuilder(
-        callAdapterFactory: CallAdapter.Factory,
         converterFactory: Converter.Factory
     ): Retrofit.Builder {
         return Retrofit.Builder()
-            .addCallAdapterFactory(callAdapterFactory)
             .addConverterFactory(converterFactory)
-
     }
 
     @ApplicationScope

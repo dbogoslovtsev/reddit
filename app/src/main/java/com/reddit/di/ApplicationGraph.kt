@@ -1,7 +1,6 @@
 package com.reddit.di
 
 import android.content.Context
-import com.data.di.module.ExecutionThreadsModule
 import com.data.di.module.KeyStoreModule
 import com.data.di.module.RepositoryModule
 import com.data.di.module.RetrofitModule
@@ -22,8 +21,7 @@ import dagger.Provides
         UseCaseModule::class,
         RepositoryModule::class,
         KeyStoreModule::class,
-        RetrofitModule::class,
-        ExecutionThreadsModule::class
+        RetrofitModule::class
     ]
 )
 interface AppComponent {
