@@ -24,7 +24,7 @@ open class BaseActivity<VIEW_MODEL : BaseViewModel> : AppCompatActivity() {
 
         with(viewModel) {
             errorLiveData.observe(this@BaseActivity) {
-                showToast(it)
+                it.message?.run { showToast(this) }
             }
         }
     }

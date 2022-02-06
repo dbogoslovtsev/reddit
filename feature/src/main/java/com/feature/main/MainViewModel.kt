@@ -1,20 +1,18 @@
 package com.feature.main
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.viewModelScope
 import com.core.base.BaseViewModel
+import com.core.base.SingleLiveEvent
 import com.domain.entity.DataWrapper
 import com.domain.entity.Post
 import com.domain.usecase.GetTopPostsUc
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
     private val getTopPostsUc: GetTopPostsUc
 ) : BaseViewModel() {
 
-    val topPostsLiveData = MutableLiveData<List<DataWrapper<Post>>>()
+    val topPostsLiveData = SingleLiveEvent<List<DataWrapper<Post>>>()
 
     override fun init(savedStateHandle: SavedStateHandle) {
         savedStateHandle.getLiveData<List<DataWrapper<Post>>?>("topPostsLiveData").value?.run {
@@ -22,12 +20,11 @@ class MainViewModel @Inject constructor(
         } ?: getTopPosts()
     }
 
-    fun getTopPosts(after: String? = null) {
-        viewModelScope.launch {
-            topPostsLiveData.value = getTopPostsUc.execute(after)
-            // TODO:
-//            errorLiveData.value = e.localizedMessage!!
-
+    fun getTopPosts(after: String? = null) = execute(
+        { getTopPostsUc.call(after) }
+    ) {
+        onComplete = {
+            topPostsLiveData.value = it
         }
     }
 

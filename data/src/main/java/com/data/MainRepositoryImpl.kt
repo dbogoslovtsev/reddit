@@ -5,7 +5,7 @@ import com.domain.entity.Post
 import com.domain.repository.MainRepository
 import javax.inject.Inject
 
-class MainRepositoryImpl @Inject constructor(private var retrofit: RedditRetrofitService) :
+class MainRepositoryImpl @Inject constructor(private val retrofit: RedditRetrofitService) :
     MainRepository {
 
     override suspend fun getTopPosts(after: String?): List<DataWrapper<Post>> {
