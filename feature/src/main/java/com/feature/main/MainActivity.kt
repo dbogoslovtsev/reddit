@@ -4,12 +4,13 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.core.base.BaseActivity
 import com.core.customview.HorizontalItemDecorator
-import com.feature.main.di.MainComponent
-import com.feature.main.di.MainComponentFactoryProvider
-import com.feature.main.di.MainModule
+import com.feature.di.MainComponent
+import com.feature.di.MainComponentFactoryProvider
+import com.feature.di.MainModule
 import com.reddit.feature.R
 import com.reddit.feature.databinding.ActivityMainBinding
 
@@ -20,22 +21,23 @@ class MainActivity : BaseActivity<MainViewModel>() {
     private val adapter = PostAdapter(::onItemClicked, ::onLastPostReached)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         getMainComponent().inject(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         with(binding) {
-            postsRv.layoutManager =
+            rvPosts.layoutManager =
                 LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
-            postsRv.addItemDecoration(
+            rvPosts.addItemDecoration(
                 HorizontalItemDecorator(
                     resources.getDimensionPixelSize(
                         R.dimen.padding_half
                     )
                 )
             )
-            postsRv.adapter = adapter
+            rvPosts.adapter = adapter
         }
 
         with(viewModel) {

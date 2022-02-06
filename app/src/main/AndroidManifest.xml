@@ -7,16 +7,14 @@
 
     <application
         android:name="com.reddit.RedditApp"
-        android:fullBackupContent="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_fab_reddit"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name="com.feature.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
+            android:theme="@style/StartingTheme"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

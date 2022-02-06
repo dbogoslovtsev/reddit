@@ -6,8 +6,8 @@ import com.data.di.module.RepositoryModule
 import com.data.di.module.RetrofitModule
 import com.domain.di.module.UseCaseModule
 import com.domain.di.scope.ApplicationScope
-import com.feature.main.di.FeatureModule
-import com.feature.main.di.MainComponent
+import com.feature.di.FeatureModule
+import com.feature.di.MainComponent
 import dagger.Component
 import dagger.Module
 import dagger.Provides

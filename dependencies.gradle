@@ -18,14 +18,13 @@ ext {
     dagger_version = '2.40.5'
 
     /** Coroutines **/
-    coroutines_version = '1.3.9'
+    coroutines_version = '1.6.0-native-mt'
 
     /** Presentation **/
     glide_version = '4.12.0'
     appcompat_version = '1.4.1'
-    constraint_layout_version = '2.1.3'
-    swipe_refresh_layuout_version = '1.1.0'
-    recycler_version = '1.2.1'
+    material_library_version = '1.5.0'
+    splash_screen_version = '1.0.0-beta01'
 
     /** Browser **/
     browser_version = '1.4.0'
@@ -35,7 +34,7 @@ ext {
     okhttp_version = '5.0.0-alpha.4'
 
     /** Tools and utils **/
-    leak_cannary_version = '2.7'
+    leak_cannary_version = '2.8.1'
     timber_version = '4.7.1'
 
     dependencies = [
@@ -57,11 +56,10 @@ ext {
             liveDataExtensions      : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
             viewModelExtensions     : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
 
-            // Ui
+            // Presentation
+            splashScreen            : "androidx.core:core-splashscreen:$splash_screen_version",
+            material                : "com.google.android.material:material:$material_library_version",
             appcompat               : "androidx.appcompat:appcompat:$appcompat_version",
-            constraintLayout        : "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
-            recyclerView            : "androidx.recyclerview:recyclerview:$recycler_version",
-            swipeRefreshLayout      : "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layuout_version",
 
             // Browser
             browser                 : "androidx.browser:browser:$browser_version",

@@ -27,9 +27,8 @@ dependencies {
 
     api rootProject.ext.dependencies.leakCanary
 
+    api rootProject.ext.dependencies.material
     api rootProject.ext.dependencies.appcompat
-    api rootProject.ext.dependencies.constraintLayout
-    api rootProject.ext.dependencies.recyclerView
     api rootProject.ext.dependencies.browser
 
     api rootProject.ext.dependencies.liveDataExtensions

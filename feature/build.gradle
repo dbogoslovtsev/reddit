@@ -25,9 +25,8 @@ android {
 
 dependencies {
     implementation project(':core')
-
     implementation rootProject.ext.dependencies.kotlin
-
+    implementation rootProject.ext.dependencies.splashScreen
     kapt rootProject.ext.dependencies.daggerCompiler
     kapt rootProject.ext.dependencies.glideCompiler
 }

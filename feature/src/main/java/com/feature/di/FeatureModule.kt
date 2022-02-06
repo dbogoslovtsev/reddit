@@ -1,4 +1,4 @@
-package com.feature.main.di
+package com.feature.di
 
 import androidx.savedstate.SavedStateRegistryOwner
 import com.core.base.BaseViewModel

@@ -1,8 +1,8 @@
 package com.reddit
 
 import android.app.Application
-import com.feature.main.di.MainComponent
-import com.feature.main.di.MainComponentFactoryProvider
+import com.feature.di.MainComponent
+import com.feature.di.MainComponentFactoryProvider
 import com.reddit.di.AppComponent
 import com.reddit.di.AppModule
 import com.reddit.di.DaggerAppComponent
