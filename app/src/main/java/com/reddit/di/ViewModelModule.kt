@@ -2,7 +2,8 @@ package com.reddit.di
 
 import androidx.lifecycle.ViewModel
 import com.core.di.viewmodel.ViewModelKey
-import com.feature.main.MainViewModel
+import com.feature.comments.CommentsViewModel
+import com.feature.posts.PostsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -12,6 +13,11 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
+    @ViewModelKey(PostsViewModel::class)
+    abstract fun bindPostsViewModel(postsViewModel: PostsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CommentsViewModel::class)
+    abstract fun bindCommentsViewModel(commentsViewModel: CommentsViewModel): ViewModel
 }

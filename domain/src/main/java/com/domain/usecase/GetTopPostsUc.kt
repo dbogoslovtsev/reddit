@@ -1,10 +1,10 @@
 package com.domain.usecase
 
-import com.domain.repository.MainRepository
+import com.domain.repository.RedditRepository
 import javax.inject.Inject
 
 class GetTopPostsUc @Inject constructor(
-    private val mainRepository: MainRepository
+    private val redditRepository: RedditRepository
 ) {
-    suspend fun call(after: String?) = mainRepository.getTopPosts(after)
+    suspend fun call(after: String?) = redditRepository.getTopPosts(after)
 }

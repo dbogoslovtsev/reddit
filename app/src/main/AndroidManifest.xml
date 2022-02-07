@@ -9,18 +9,24 @@
         android:name="com.reddit.RedditApp"
         android:icon="@drawable/ic_fab_reddit"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="LockedOrientationActivity">
+
         <activity
-            android:name="com.feature.main.MainActivity"
+            android:name="com.feature.posts.PostsActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/StartingTheme"
-            tools:ignore="LockedOrientationActivity">
+            android:theme="@style/StartingTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.feature.comments.CommentsActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

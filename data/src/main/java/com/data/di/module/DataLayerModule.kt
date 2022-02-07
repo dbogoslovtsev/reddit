@@ -2,7 +2,7 @@ package com.data.di.module
 
 import android.content.Context
 import android.preference.PreferenceManager
-import com.data.MainRepositoryImpl
+import com.data.RedditRepositoryImpl
 import com.data.OauthRetrofitService
 import com.data.RedditRetrofitService
 import com.data.RetrofitConfig
@@ -13,7 +13,7 @@ import com.data.keystore.KeyStoreImpl
 import com.domain.di.qualifier.OauthQualifier
 import com.domain.di.scope.ApplicationScope
 import com.domain.keystore.KeyStore
-import com.domain.repository.MainRepository
+import com.domain.repository.RedditRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -30,8 +30,8 @@ import java.util.concurrent.TimeUnit
 class RepositoryModule {
 
     @Provides
-    fun provideMainRepository(redditRetrofit: RedditRetrofitService): MainRepository {
-        return MainRepositoryImpl(redditRetrofit)
+    fun provideMainRepository(redditRetrofit: RedditRetrofitService): RedditRepository {
+        return RedditRepositoryImpl(redditRetrofit)
     }
 }
 

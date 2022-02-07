@@ -7,7 +7,7 @@ import com.data.di.module.RetrofitModule
 import com.domain.di.module.UseCaseModule
 import com.domain.di.scope.ApplicationScope
 import com.feature.di.FeatureModule
-import com.feature.di.MainComponent
+import com.feature.di.FeatureComponent
 import dagger.Component
 import dagger.Module
 import dagger.Provides
@@ -31,10 +31,7 @@ interface AppComponent {
         fun create(modules: AppModule): AppComponent
     }
 
-    // downstream dependent components need data types to be exposed
-    // 'subcomponents' do not need this exposure (i.e. 'Context' is automatically reachable)
-    fun mainComponentFactory(): MainComponent.Factory
-
+    fun featureComponentBuilder(): FeatureComponent.Builder
 }
 
 @Module

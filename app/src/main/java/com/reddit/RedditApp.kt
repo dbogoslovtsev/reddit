@@ -1,13 +1,13 @@
 package com.reddit
 
 import android.app.Application
-import com.feature.di.MainComponent
-import com.feature.di.MainComponentFactoryProvider
+import com.feature.di.FeatureComponent
+import com.feature.di.FeatureComponentBuilderProvider
 import com.reddit.di.AppComponent
 import com.reddit.di.AppModule
 import com.reddit.di.DaggerAppComponent
 
-class RedditApp : Application(), MainComponentFactoryProvider {
+class RedditApp : Application(), FeatureComponentBuilderProvider {
 
     private lateinit var appComponent: AppComponent
 
@@ -20,7 +20,8 @@ class RedditApp : Application(), MainComponentFactoryProvider {
         appComponent = DaggerAppComponent.factory().create(AppModule(this))
     }
 
-    override fun provideMainComponentFactory(): MainComponent.Factory =
-        appComponent.mainComponentFactory()
+    override fun provideFeatureComponentBuilder(): FeatureComponent.Builder {
+        return appComponent.featureComponentBuilder()
+    }
 
 }

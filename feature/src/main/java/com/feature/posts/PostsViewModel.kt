@@ -1,4 +1,4 @@
-package com.feature.main
+package com.feature.posts
 
 import androidx.lifecycle.SavedStateHandle
 import com.core.base.BaseViewModel
@@ -8,7 +8,7 @@ import com.domain.entity.Post
 import com.domain.usecase.GetTopPostsUc
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor(
+class PostsViewModel @Inject constructor(
     private val getTopPostsUc: GetTopPostsUc
 ) : BaseViewModel() {
 

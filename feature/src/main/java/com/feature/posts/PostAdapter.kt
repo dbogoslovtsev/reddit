@@ -1,4 +1,4 @@
-package com.feature.main
+package com.feature.posts
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

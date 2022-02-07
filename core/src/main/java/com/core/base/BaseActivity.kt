@@ -1,26 +1,28 @@
 package com.core.base
 
+import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.core.di.viewmodel.ViewModelFactory
 import javax.inject.Inject
 
-open class BaseActivity<VIEW_MODEL : BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    lateinit var viewModelClass: Class<VIEW_MODEL>
+    lateinit var viewModelClass: Class<VM>
 
-    protected val viewModel: VIEW_MODEL by lazy {
+    protected val viewModel: VM by lazy {
         ViewModelProvider(this, viewModelFactory)[viewModelClass]
     }
 
 
-    override fun onStart() {
-        super.onStart()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        injectDependencies()
 
         with(viewModel) {
             errorLiveData.observe(this@BaseActivity) {
@@ -29,7 +31,10 @@ open class BaseActivity<VIEW_MODEL : BaseViewModel> : AppCompatActivity() {
         }
     }
 
-    private fun showToast(message: String) {
+    protected fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
+
+    protected abstract fun injectDependencies()
+
 }
