@@ -16,4 +16,4 @@ annotation class ActivityScope
 
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
-annotation class PresentationScope
+annotation class ViewScope
