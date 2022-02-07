@@ -22,20 +22,13 @@ android {
 
 dependencies {
     api project(':domain')
-
-    implementation rootProject.ext.dependencies.kotlin
-
     api rootProject.ext.dependencies.leakCanary
-
     api rootProject.ext.dependencies.material
     api rootProject.ext.dependencies.appcompat
     api rootProject.ext.dependencies.browser
-
     api rootProject.ext.dependencies.liveDataExtensions
     api rootProject.ext.dependencies.viewModelExtensions
-
-    kapt rootProject.ext.dependencies.daggerCompiler
-
     api rootProject.ext.dependencies.glide
     kapt rootProject.ext.dependencies.glideCompiler
+    kapt rootProject.ext.dependencies.daggerCompiler
 }

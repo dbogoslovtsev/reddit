@@ -21,10 +21,9 @@ android {
 }
 
 dependencies {
-    implementation rootProject.ext.dependencies.kotlin
-
+    api rootProject.ext.dependencies.kotlin
+    api rootProject.ext.dependencies.coroutines
+    api rootProject.ext.dependencies.retrofitConverterGson
     api rootProject.ext.dependencies.dagger
     kapt rootProject.ext.dependencies.daggerCompiler
-
-    api rootProject.ext.dependencies.retrofitConverterGson
 }

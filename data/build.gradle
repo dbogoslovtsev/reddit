@@ -21,16 +21,10 @@ android {
 }
 
 dependencies {
-    implementation project(':domain')
-
-    implementation rootProject.ext.dependencies.kotlin
-
-    kapt rootProject.ext.dependencies.daggerCompiler
-
-    api rootProject.ext.dependencies.coroutines
-
+    api project(':domain')
     api rootProject.ext.dependencies.retrofit
     api rootProject.ext.dependencies.okHttpLoggingInterceptor
+    kapt rootProject.ext.dependencies.daggerCompiler
 }
 repositories {
     mavenCentral()
