@@ -22,6 +22,7 @@ android {
 
 dependencies {
     api project(':domain')
+    api rootProject.ext.dependencies.coreExtensions
     api rootProject.ext.dependencies.leakCanary
     api rootProject.ext.dependencies.material
     api rootProject.ext.dependencies.appcompat

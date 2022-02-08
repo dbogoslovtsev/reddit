@@ -5,17 +5,19 @@ import com.feature.di.FeatureComponentBuilderProvider
 
 class CommentsActivity : BaseActivity<CommentsViewModel>() {
 
-
     override fun onStart() {
         super.onStart()
         showToast("Second module loaded")
     }
 
+    // TODO: Change this boilerplate
     override fun injectDependencies() =
-        (application as FeatureComponentBuilderProvider).provideFeatureComponentBuilder()
+        (application as FeatureComponentBuilderProvider).featureComponentBuilder().build()
+            .activityComponentBuilder()
+            .activity(this)
             .build()
-            .commentsComponentBuilder()
-            .commentsActivity(this)
+            .presentationComponentBuilder()
+            .savedStateRegistryOwner(this)
             .build()
             .inject(this)
 }

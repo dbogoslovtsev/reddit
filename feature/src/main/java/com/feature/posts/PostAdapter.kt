@@ -13,7 +13,8 @@ import com.domain.entity.Post
 import com.reddit.feature.databinding.ItemPostBinding
 
 class PostAdapter(
-    val onItemClicked: (url: String) -> Unit,
+    private val onPostClicked: (url: String) -> Unit,
+    private val onCommentsClicked: (url: String) -> Unit,
     private val onLastPostReached: (url: String?) -> Unit
 ) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
@@ -61,8 +62,9 @@ class PostAdapter(
                         .into(DrawableImageViewTarget(binding.image))
                 }
 
-                binding.title.setOnClickListener { onItemClicked.invoke(url) }
-                binding.image.setOnClickListener { onItemClicked.invoke(url) }
+                binding.title.setOnClickListener { onCommentsClicked.invoke(url) }
+                binding.image.setOnClickListener { onCommentsClicked.invoke(url) }
+                binding.comments.setOnClickListener { onCommentsClicked.invoke(id) }
             }
         }
     }

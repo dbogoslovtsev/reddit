@@ -20,7 +20,7 @@ class RedditApp : Application(), FeatureComponentBuilderProvider {
         appComponent = DaggerAppComponent.factory().create(AppModule(this))
     }
 
-    override fun provideFeatureComponentBuilder(): FeatureComponent.Builder {
+    override fun featureComponentBuilder(): FeatureComponent.Builder {
         return appComponent.featureComponentBuilder()
     }
 
