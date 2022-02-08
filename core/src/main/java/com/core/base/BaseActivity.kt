@@ -5,7 +5,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.core.di.viewmodel.ViewModelFactory
-import com.core.navigation.ScreenNavigator
 import javax.inject.Inject
 
 abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
@@ -19,9 +18,6 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
     protected val viewModel: VM by lazy {
         ViewModelProvider(this, viewModelFactory)[viewModelClass]
     }
-
-//    @Inject
-    protected lateinit var screenNavigator: ScreenNavigator
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

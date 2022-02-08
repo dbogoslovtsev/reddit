@@ -1,5 +1,6 @@
 package com.feature.di
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
@@ -10,17 +11,25 @@ import com.domain.di.scope.FeatureScope
 import com.domain.di.scope.PresentationScope
 import com.feature.comments.CommentsActivity
 import com.feature.comments.CommentsViewModel
+import com.feature.navigation.ScreenNavigator
+import com.feature.navigation.ScreenNavigatorImpl
 import com.feature.posts.PostsActivity
 import com.feature.posts.PostsViewModel
 import dagger.*
 import dagger.multibindings.IntoMap
 
-/** Provides FeatureComponent from the app module **/
+/**
+ * Provides FeatureComponent back from the 'app' module
+ * to keep application level entities within standalone project module
+ * **/
 interface FeatureComponentBuilderProvider {
     fun featureComponentBuilder(): FeatureComponent.Builder
 }
 
-/** Feature scope **/
+/**
+ * Feature scope can be treated as an ApplicationScope in
+ * a simple single-module application
+ * **/
 @FeatureScope
 @Subcomponent(modules = [FeatureModule::class])
 interface FeatureComponent {
@@ -44,7 +53,7 @@ interface ActivityComponent {
     @Subcomponent.Builder
     interface Builder {
         @BindsInstance
-        fun activity(appCompatActivity: AppCompatActivity): Builder
+        fun activity(activity: AppCompatActivity): Builder
         fun build(): ActivityComponent
     }
 
@@ -54,17 +63,16 @@ interface ActivityComponent {
 @Module(subcomponents = [PresentationComponent::class])
 class ActivityModule {
 
-//    @ActivityScope
-//    @Binds
-//    abstract fun screensNavigator(screensNavigatorImpl: ScreenNavigatorImpl): ScreenNavigator
+    @Provides
+    fun screensNavigator(activity: AppCompatActivity, resources: Resources): ScreenNavigator =
+        ScreenNavigatorImpl(activity, resources)
 
-//    companion object {
-        @Provides
-        fun layoutInflater(activity: AppCompatActivity) = LayoutInflater.from(activity)
+    @Provides
+    fun layoutInflater(activity: AppCompatActivity): LayoutInflater =
+        LayoutInflater.from(activity)
 
-        @Provides
-        fun fragmentManager(activity: AppCompatActivity) = activity.supportFragmentManager
-//    }
+    @Provides
+    fun fragmentManager(activity: AppCompatActivity) = activity.supportFragmentManager
 }
 
 /** Presentation scope **/
@@ -84,7 +92,7 @@ interface PresentationComponent {
 }
 
 @Module
-class PresentationModule() {
+class PresentationModule {
 
     @Provides
     fun provideMainViewModelClass(): Class<PostsViewModel> = PostsViewModel::class.java

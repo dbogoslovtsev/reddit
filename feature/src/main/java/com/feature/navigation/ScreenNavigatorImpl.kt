@@ -1,4 +1,4 @@
-package com.reddit.navigation
+package com.feature.navigation
 
 import android.content.Intent
 import android.content.res.Resources
@@ -8,9 +8,8 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import com.core.PresentationConstants
-import com.core.navigation.ScreenNavigator
 import com.feature.comments.CommentsActivity
-import com.reddit.app.R
+import com.reddit.feature.R
 import javax.inject.Inject
 
 class ScreenNavigatorImpl @Inject constructor(

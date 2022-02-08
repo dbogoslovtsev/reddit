@@ -18,7 +18,6 @@ import dagger.Provides
     modules = [
         AppModule::class,
         RepositoryModule::class,
-        NavigationModule::class,
         UseCaseModule::class,
         KeyStoreModule::class,
         RetrofitModule::class
@@ -32,7 +31,9 @@ interface AppComponent {
     }
 
     // Downstream dependent components need data types to be exposed
-    // Subcomponents do not need this exposure (i.e. 'Context' is automatically reachable)
+    // Subcomponents do not need this exposure
+    // (i.e. Application context is automatically reachable)
+
     fun featureComponentBuilder(): FeatureComponent.Builder
 }
 

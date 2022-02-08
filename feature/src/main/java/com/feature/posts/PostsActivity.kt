@@ -6,10 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.core.base.BaseActivity
 import com.core.customview.HorizontalItemDecorator
 import com.feature.di.FeatureComponentBuilderProvider
+import com.feature.navigation.ScreenNavigator
 import com.reddit.feature.R
 import com.reddit.feature.databinding.ActivityPostsBinding
+import javax.inject.Inject
 
 class PostsActivity : BaseActivity<PostsViewModel>() {
+
+    @Inject
+    lateinit var screenNavigator: ScreenNavigator
 
     private lateinit var binding: ActivityPostsBinding
 
@@ -19,7 +24,6 @@ class PostsActivity : BaseActivity<PostsViewModel>() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        // TODO: Move to View
         binding = ActivityPostsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         with(binding) {
@@ -54,8 +58,7 @@ class PostsActivity : BaseActivity<PostsViewModel>() {
         viewModel.getTopPosts(postId)
     }
 
-    // TODO: Change this boilerplate
-    override fun injectDependencies() {
+    override fun injectDependencies() =
         (application as FeatureComponentBuilderProvider).featureComponentBuilder().build()
             .activityComponentBuilder()
             .activity(this)
@@ -64,5 +67,4 @@ class PostsActivity : BaseActivity<PostsViewModel>() {
             .savedStateRegistryOwner(this)
             .build()
             .inject(this)
-    }
 }
