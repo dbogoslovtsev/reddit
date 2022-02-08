@@ -47,7 +47,7 @@ class PostsActivity : BaseActivity<PostsViewModel>() {
     }
 
     private fun onPostClicked(url: String) {
-        screenNavigator.navigatePostDetails(url)
+        screenNavigator.navigateUrl(url)
     }
 
     private fun onCommentsClicked(postId: String) {
