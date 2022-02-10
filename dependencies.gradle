@@ -6,7 +6,7 @@ ext {
     versionName = '0.1'
     buildTools = '30.0.2'
     applicationId = 'com.reddit.app'
-    build_gradle_tools_version = '7.1.0'
+    build_gradle_tools_version = '7.1.1'
 
     /** Kotlin **/
     kotlin_version = '1.6.10'
@@ -22,7 +22,7 @@ ext {
     coroutines_version = '1.6.0-native-mt'
 
     /** Presentation **/
-    glide_version = '4.12.0'
+    glide_version = '4.13.0'
     appcompat_version = '1.4.1'
     material_library_version = '1.5.0'
     splash_screen_version = '1.0.0-beta01'
