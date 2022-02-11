@@ -1,7 +1,7 @@
 package com.data.di.module
 
 import android.content.Context
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import com.data.RedditRepositoryImpl
 import com.data.OauthRetrofitService
 import com.data.RedditRetrofitService

@@ -24,7 +24,6 @@ android {
 
 dependencies {
     implementation project(':data')
-    implementation project(':data')
     implementation project(':feature')
     kapt rootProject.ext.dependencies.daggerCompiler
 }
