@@ -11,13 +11,13 @@ class HeaderInterceptor constructor(private val keyStore: KeyStore) : Intercepto
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
 
-        val headeredRequestBuilder = originalRequest.newBuilder()
+        val newRequestBuilder = originalRequest.newBuilder()
 
-        headeredRequestBuilder.addHeader("Content-Type", "application/json")
-        if (keyStore.provideToken().isNotEmpty())
-            headeredRequestBuilder.addHeader("Authorization", "bearer ${keyStore.provideToken()}")
-        else headeredRequestBuilder.addHeader("Authorization", "bearer 1234567890")
+        newRequestBuilder.addHeader("Content-Type", "application/json")
+        if (keyStore.provideToken().isNotEmpty()) {
+            newRequestBuilder.addHeader("Authorization", "bearer ${keyStore.provideToken()}")
+        }
 
-        return chain.proceed(headeredRequestBuilder.build())
+        return chain.proceed(newRequestBuilder.build())
     }
 }
