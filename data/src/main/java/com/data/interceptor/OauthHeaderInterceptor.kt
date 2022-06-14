@@ -14,12 +14,12 @@ class OauthHeaderInterceptor : Interceptor {
         val clientId64 = Base64.encodeToString("${RetrofitConfig.CLIENT_ID}:".toByteArray(), Base64.NO_WRAP)
         val credentials = "Basic $clientId64"
 
-        val headeredRequestBuilder = originalRequest.newBuilder()
+        val headerRequestBuilder = originalRequest.newBuilder()
 
-        headeredRequestBuilder.addHeader("Content-Type", "application/x-www-form-urlencoded")
-        headeredRequestBuilder.addHeader("Authorization", credentials)
+        headerRequestBuilder.addHeader("Content-Type", "application/x-www-form-urlencoded")
+        headerRequestBuilder.addHeader("Authorization", credentials)
 
-        return chain.proceed(headeredRequestBuilder.build())
+        return chain.proceed(headerRequestBuilder.build())
 
     }
 }

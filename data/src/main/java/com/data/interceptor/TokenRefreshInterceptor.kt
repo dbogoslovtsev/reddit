@@ -17,7 +17,7 @@ class TokenRefreshInterceptor constructor(
         val request = chain.request()
         var response = chain.proceed(request)
 
-        if (response.code == 401) {
+        if (response.code == 401 || response.code == 403) {
 
             val requestBody = mapOf(
                 "grant_type" to "https://oauth.reddit.com/grants/installed_client",
